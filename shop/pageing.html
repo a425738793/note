@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.12.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="css/paging.css"/>
+
+	</head>
+	<body>
+		<ul class="shop" id="shop">
+			
+		</ul>
+		
+		<div class="button" id="button">
+			<em id="ButtonPrev">上一页</em>
+			
+			<div class="button-center">
+				<div id="ButtonCenter"></div>
+			</div>
+			
+			<em id="ButtonNext">下一页</em>
+		</div>
+		<script type="text/javascript">
+			var page = 1;
+			changePage(page);
+			function changePage(page){
+				
+				$.ajax({
+					"type": "get",
+					"url": "http://h6.duchengjiu.top/shop/api_goods.php?page="+page+"&pagesize=20",
+					"dataType": "json",
+					"success": function(data){
+						console.log(data);
+						//添加分页按钮
+						for(var j = 0;j<data.page.page_count;j++){
+							$("#ButtonCenter").append($('<span>' + (j+1) + '</span>' ));
+						}
+						for(var i = 0; i<data.data.length;i++){
+							
+							$("#shop").append('<li><img src="' +data.data[i].goods_thumb+ '" /><p><a href="detail.html?goods_id=' + data.data[i].goods_id + '">' +data.data[i].goods_name+ '</a></p><p>' +data.data[i].goods_desc+ '</p><p class="price">' +data.data[i].price+ '</p></li>');
+
+							
+						}
+
+					}
+					
+				});
+				
+			}
+				
+			$("#ButtonNext").click(function(){
+				
+				page++;
+				$("#shop").html("");
+				changePage(page);
+				$("#ButtonCenter").css("margin-left",(page-2)*-52+"px");
+				console.log($("#ButtonCenter").css("margin-left"));
+				
+			});
+			$("#ButtonPrev").click(function(){
+				
+				page--;
+				if (page<=1) {
+					page = 1; 
+//					$("#ButtonPrev").hide()
+				}
+				$("#shop").html("");
+				changePage(page);
+				$("#ButtonCenter").css("margin-left",(page-2)*-52+"px");
+				console.log($("#ButtonCenter").css("margin-left"));
+				
+			})
+			
+			$("#ButtonCenter").click(function(event){
+				event = event || window.event;
+				
+				var target = event.target ||event.srcElement;
+//				console.log(target.nodeName);
+				if (target.nodeName === "SPAN") {
+					page = target.innerText;
+					console.log(page);
+					$("#shop").html("");
+					changePage(page);
+					
+					$("#ButtonCenter").css("margin-left",(page-2)*-52+"px");
+					
+				}
+				
+			})
+			
+			
+			
+		</script>
+	</body>
+</html>

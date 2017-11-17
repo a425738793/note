@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+			<my-hi></my-hi>
+			<!--ng-是angular系统指令，自定义指令不要用ng--->			
+			<div my-hi>
+				
+			</div>
+		
+		<script src="js/angular.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			
+			var m1 = angular.module('myApp',[]);
+			
+			
+			//m1.directive("名称",function(){}
+			//创建一个自定义指令，接受两个参数，第一个是指令的名称，另一个是回调函数
+			m1.directive("myHi",function(){
+				//要用驼峰：写成myHi
+				return {
+					restrict:"EA",
+					replace:true,
+					//替换作用，替换外层包裹的标签和替换注释
+					template:"<p>angularJs</p>"
+					//给hi这个自定义指令添加模板，内容是"<p>angularJs</p>"
+				
+				}
+				
+			})
+			
+			m1.controller('Aaa',function($scope){
+				$scope.name = "路飞";
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script src="js/jquery-1.12.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var pageName = 4;
+			var maxPage = 9;
+			clickPaging();
+			showData();
+			
+			function showData(){
+				
+				$.get("JSON/getPostList"+pageName,function(response){
+					var obj = JSON.parse(response);
+					var html = '';
+					for (var i = 0;obj.postList.length;i++) {
+						
+						var item = obj.postList[i];
+						html +=`<div class="row">
+									<div class="cols">
+										<div class="col col1"><a href='javascript:;'>${item.name}</a></div>
+										<div class="col col2">${item.postType}</div>
+										<div class="col col3">${item.workPlace}</div>
+										<div class="col col4">${item.recruitNum}</div>
+										<div class="col col5">${item.publishDate}</div>
+										<div class="row_btn"></div>
+									</div>
+									<div class="detail">
+										<div className="serviceCondition">
+											<h5>入职资格： </h5>
+											${item.serviceCondition}</div> 
+										<div className="workContent">
+											<h5>工作内容： </h5>
+											${item.workContent}</div>
+									</div>
+								</div>`;
+							
+						
+					}
+					
+					$(".content").html(html);
+					
+					$(".row").click(function(){
+						
+						$(this).children(".detail").stop(true).slideToggle();
+						
+					})
+				})
+				
+			}
+			
+			function clickPaging(){
+				
+				
+				
+			}
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div ng-controller="Aaa">
+			<input type="text" value="{{ name }}" ng-disabled="isdisabled"/>
+			<input type="button" value="{{ name }}" ng-disabled="isdisabled"/>
+		</div>
+		
+		<script src="js/angular.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			
+			var m1 = angular.module('myApp',[]);
+			m1.controller('Aaa',function($scope,$interval){
+				
+				var num = 3;
+				
+				$scope.name = num +"秒";
+				
+				$scope.isdisabled = true;
+				
+			})
+		</script>
+	</body>
+</html>

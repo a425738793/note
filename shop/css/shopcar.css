@@ -1,0 +1,141 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.wrap{
+	width: 1080px;
+	margin: 100px auto;
+	
+}
+.wrap .title{
+	margin-top: 10px;
+	height: 40px;
+	border: 1px solid #5F9EA0;
+	line-height: 40px;
+	font-size: 13px;
+	
+}
+.wrap .title div{
+	float: left;
+	position: relative;
+	margin-left: 10px;
+}
+.title .all{
+	width: 200px;
+}
+.title .all input{
+	position: relative;
+	top: 3px;
+	margin-right: 3px;
+}
+.title .shop-info{
+	width: 300px;
+}
+.title .price{
+	width: 100px;
+	
+	
+}
+.title .number{
+	width: 150px;
+}
+.title .money{
+	width: 100px;
+}
+.title .con{
+	width: 50px;
+}
+.content{
+	margin-top: 20px;
+	/*border: 1px solid #FFA500;*/
+	min-height: 500px;
+	/*overflow: hidden;*/
+}
+.content .list div{
+	float: left;
+	margin-left: 10px;
+}
+.content .list{
+	height: 150px;
+	border: 1px solid #FF0000;
+	margin-top: 10px;
+}
+.content .list .pic{
+	line-height: 150px;
+	width: 200px;
+}
+.content .list .pic img{
+	width: 100px;
+	height: 100px;
+	vertical-align: middle;
+	margin-left: 20px;
+}
+.content .list .info{
+	width: 300px;
+	padding-top: 25px;
+	height: 125px;
+}
+.content .list .price{
+	width: 100px;
+	line-height: 150px;
+	text-align: center;
+}
+.content .list .number{
+	width: 150px;
+	line-height: 150px;
+	text-align: center;
+}
+.content .list .number input{
+	width: 20px;
+	outline: none;
+}
+.content .list .number button{
+	padding: 0 3px;
+}
+.content .list .money{
+	width: 100px;
+	line-height: 150px;
+	text-align: center;
+}
+.content .list .con{
+	width: 50px;
+	line-height: 150px;
+	text-align: center;
+	cursor: pointer;
+}
+.content .list .con:hover{
+	color: red;
+}
+.buttom-footer{
+	height: 70px;
+	line-height: 70px;
+	background: silver;
+}
+.buttom-footer .del{
+	float: left;
+	margin-left: 10px;
+	cursor: pointer;
+}
+.buttom-footer .del:hover{
+	color: red;
+	text-decoration: underline;
+}
+.buttom-footer .cur,.buttom-footer .over{
+	float: right;
+	margin-right: 10px;
+}
+.buttom-footer .cur em{
+	color: red;
+	margin-right: 5px;
+}
+.buttom-footer .over{
+	height: 30px;
+	width: 50px;
+	padding: 5px;
+	line-height: 30px;
+	margin-top: 15px;
+	background: red;
+	color: #fff;
+	cursor: pointer;
+	text-align: center;
+}

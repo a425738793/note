@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/angular.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			
+			var m1 = angular.module('myApp',[]);
+			m1.controller('Aaa',['$scope','$filter',function($scope,$filter){
+				
+				data1 = [
+					{'name':'玫瑰花','id' : '01','pric' : 200,'num' : 10,'address' : '北京','evaluate' : '非常好的'},
+					{'name':'百合花','id' : '02','pric' : 100,'num' : 12,'address' : '上海','evaluate' : '不错'},
+					{'name':'月季花','id' : '03','pric' : 80,'num' : 14,'address' : '北京','evaluate' : '良好'},
+					{'name':'茉莉花','id' : '04','pric' : 300,'num' : 11,'address' : '天津','evaluate' : '很好'},
+					{'name':'杜鹃花','id' : '05','pric' : 400,'num' : 19,'address' : '四川','evaluate' : '非常好的'},
+					{'name':'牡丹花','id' : '06','pric' : 180,'num' : 20,'address' : '广州','evaluate' : '还好'},
+					{'name':'莲花','id' : '07','pric' : 50,'num' : 70,'address' : '外太空','evaluate' : '质量不错'},
+					{'name':'菊花','id' : '08','pric' : 70,'num' : 50,'address' : '天南','evaluate' : 'good'},
+					{'name':'桂花','id' : '09','pric' : 220,'num' : 24,'address' : '地北','evaluate' : '非常棒'},
+					{'name':'梅花','id' : '10','pric' : 310,'num' : 13,'address' : '深圳','evaluate' : '666'},
+					{'name':'桃花','id' : '11','pric' : 460,'num' : 21,'address' : '山西','evaluate' : '好！！'},
+					{'name':'曼陀罗','id' : '12','pric' : 330,'num' : 18,'address' : '山东','evaluate' : '非常好的'},
+					
+				];
+				
+				$scope.dataList = data1;
+				$scope.dataScort = function(arg){
+					console.log(arg);
+					arguments.callee['dataSort' +arg] = !arguments.callee['dataSort' +arg];
+					$scope.dataList = $filter('orderBy')($scope.dataList,arg,arguments.callee['dataSort' +arg]);
+					
+				}
+				
+				$scope.search = function(){
+					
+					$scope.dataList = $filter('filter')(data1,$scope.dataVal);
+					
+				}
+					
+				
+			}])
+			
+		</script>
+		<style type="text/css">
+			table{
+				border-collapse: collapse;
+				background: url(img/1.jpg),no-repeat;
+				background-size: cover;
+				color: beige;
+				text-align: center;
+			}
+			.backgroundColorOdd{
+				background-color: silver;
+			}
+			.backgroundColorEven{
+				background-color: #0000FF;
+			}
+			.backgroundColorFirst{
+				background-color: chocolate;
+			}
+			div{
+				width: 300px;
+				height: 350px;
+				margin: 0 auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div ng-controller='Aaa'>
+			<table border="1">
+				<tr class="backgroundColorFirst"><th ng-click='dataScort("id")'>ID</th><th>商品名</th><th ng-click='dataScort("pric")'>单价</th><th ng-click='dataScort("num")'>数量</th><th>产地</th><th>评价</th></tr>
+				<tr class="{{$odd?'backgroundColorOdd':'backgroundColorEven'}}" ng-repeat = 'data in dataList'><td>{{data.id}}</td><td>{{data.name}}</td><td>{{data.pric | currency:'￥'}}</td><td>{{data.num}}</td><td>{{data.address}}</td><td>{{data.evaluate}}</td></tr>
+			</table>
+			<input type="text" ng-model='dataVal' /><input type="button" value="搜索" ng-click='search()' />
+		</div>
+			
+	</body>
+</html>

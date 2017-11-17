@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 100px;
+				height: 100px;
+				background-color: #000;
+				opacity: .3;
+				filter: alpha(opacity = 30);
+			}
+		</style>
+	</head>
+	<body>
+		<div id="oDiv">
+			
+		</div>
+		<script type="text/javascript">
+			function fetchComputedStyle(obj,property){
+				if (window.getComputedStyle) {
+					return alert(window.getComputedStyle(obj)[property]);
+				} else{
+					return alert(obj.currentStyle[property]);
+				}
+			}
+			var oDiv = document.getElementById("oDiv");
+			fetchComputedStyle(oDiv,"width");
+		</script>
+	</body>
+</html>

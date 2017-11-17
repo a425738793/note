@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/angular.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			
+			var m1 = angular.module('myApp',[]);
+			m1.controller('Aaa',['$scope',function($scope){
+				
+				$scope.name = 'hi';
+				
+			}])
+			
+		</script>
+	</head>
+	<body>
+		<div ng-controller='Aaa'>
+			
+			<!--<input type="text" ng-model="name" ng-model-options="{updateOn:'blur'}" />{{name}}-->
+			<input type="text" ng-model="name" ng-model-options="{debounce:2000}" />{{name}}
+			
+		</div>
+	</body>
+</html>

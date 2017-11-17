@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.blue{
+				color: blue;
+			}
+			.orange{
+				background: orange;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div ng-controller='Aaa'>
+			
+			
+			<!--<p ng-class="{blue:true,orange:true}">{{name}}</p>
+			<p ng-class="{{class1}}">{{name}}</p>
+			<a ng-href="{{url1}}">baidu</a>
+			<img ng-src="{{url2}}"/>-->
+			
+			
+			<input type="checkbox" ng-model="show" />
+			
+			<!--<div ng-show='show'>{{name}}</div>
+			<div ng-hide='show'>{{name1}}</div>-->
+			<!--<div ng-if="show">{{name}}</div>-->
+			
+			<div ng-switch on="show">
+				
+				<span ng-switch-default>默认显示</span>
+				<span ng-switch-when="true">切换效果</span>
+				
+			</div>
+			
+			
+			
+			
+		</div>
+		<script src="js/angular.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			
+			var m1 = angular.module('myApp',[]);
+			m1.controller('Aaa',function($scope){
+				$scope.name = "路飞";
+				$scope.name1 = "红发";
+//				$scope.class1 = {blue:true,orange:true};
+//				$scope.style1 = {background:'#006699',color:'white'}
+//				$scope.url1 = "http://www.baidu.com";
+//				$scope.url2 = "img/1.jpg";
+			})
+		</script>
+		
+	</body>
+	
+</html>

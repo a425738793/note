@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/angular.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			
+			var m1 = angular.module('myApp',[]);
+			m1.controller('Aaa',['$scope','$interval',function($scope,$interval){
+				
+				$scope.name = 'hello';
+				var num = 5;
+				$scope.second = num + '秒';
+				$scope.isdisabled = false;
+				var timer = $interval(function(){
+					num--;
+					if (num<0) {
+						$interval.cancel(timer);
+						$scope.isdisabled = true;
+					}
+					$scope.second = num + '秒';
+				},1000)
+				
+			}])
+			
+		</script>
+	</head>
+	<body>
+		
+		<div ng-controller="Aaa">
+			
+			<!--<input type="checkbox" ng-model='yes'/>
+			<select>
+				<option>请仔细阅读相关文件</option>
+				<option ng-selected='yes'>我已阅读相关文件</option>
+			</select>-->
+			<!--<input type="text" ng-change="name='change1'" ng-model='name'/>
+			{{name}}-->
+					<!--内容改变事件-->
+			<!--<input type="text" value="莎啦啦啦啦啦啦" ng-cut='cut=true' />{{cut}}-->
+					<!--剪切事件-->
+			<!--<input type="text" value="莎啦啦啦啦啦啦" ng-copy='copy=true' />{{copy}}-->
+					<!--复制事件-->
+			<!--<input type="text" value="莎啦啦啦啦啦啦" ng-paste='paste=true' />{{paste}}-->
+					<!--黏贴事件-->
+					
+			<input type="text" value="{{second}}" ng-disabled='isdisabled' />
+			<input type="button" value="{{second}}" ng-disabled='isdisabled' />
+		</div>
+		
+	</body>
+</html>

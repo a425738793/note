@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<my-hi></my-hi>
+		<div my-hi></div>
+		
+		<script src="js/angular.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var m1 = angular.module('myApp',[]);
+			
+			m1.directive('myHi',function(){
+				
+				return {
+					
+					restrict: 'EA',
+					replace:true,
+					template:'<p>angularJS</p>'
+					
+				}
+				
+			})
+		</script>
+		
+	</body>
+</html>

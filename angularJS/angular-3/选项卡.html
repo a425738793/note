@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.oDiv1 div{
+				display: none;
+				width: 200px;
+				height: 200px;
+				border: 2px solid purple;
+			} 
+			.red{
+				background: red;
+			}
+		</style>
+	</head>
+	<body ng-controller='Aaa'>
+		<!--<div ng-controller="Aaa">
+			{{name}}
+		</div>-->
+		<my-hi my-class='oDiv1' my-name='name' my-fn='show()'></my-hi>
+		
+		<script src="js/angular.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			
+			var m1 = angular.module('myApp',[]);
+			
+			m1.directive("myHi",function(){
+				
+				return {
+					restrict: "E",
+					replace: true,
+					scope:{
+						myClass: '@',
+						myName: '=',
+						myFn:'&'
+					},
+					controller:['$scope',function($scope){
+						$scope.name = '江萌';
+					}],
+					template: '<div class="{{myClass}}">\
+								<span class="red" ng-click="myFn()">图片</span>\
+								<span>新闻</span>\
+								<span>汽车</span>\
+								<div style="display:block">{{myName}}:{{name}}</div>\
+								<div>新闻新闻新闻新闻</div>\
+								<div>汽车汽车汽车汽车</div>\
+							</div>'
+//					templateUrl: 'temp2.html'
+				}
+				
+			})
+			m1.controller('Aaa',function($scope){
+				$scope.name = "路飞";
+				$scope.name1 = "凯凯";
+				$scope.show = function(){
+					alert(123);
+				}
+			})
+		</script>
+	</body>
+</html>

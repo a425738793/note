@@ -1,0 +1,59 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+p.searcht{
+	text-align: center;
+}
+p.searcht input[type="text"]{
+	width: 400px;
+	height: 30px;
+	line-height: 30px;
+}
+p.searcht input[type="button"]{
+	width: 80px;
+	height: 34px;
+	margin-left: -5px;
+}
+.box{
+	width: 1080px;
+	margin: 20px auto;
+	border: 3px solid #f40;
+	overflow: hidden;
+	
+}
+.box img,.box .info{
+	float: left;
+}
+.box .info{
+	margin-left: 20px;
+}
+.box .info .bh{
+	margin-top: 10px;
+	font-size: 14px;
+	color: silver;
+}
+.box .info .xname{
+	margin-top: 20px;
+	width: 550px;
+	height: 50px;
+	font-size: 16px;
+	color: #f41;
+}
+.box .info .xdesc{
+	width: 550px;
+	height: 260px;
+	font-size: 14px;
+}
+
+.cart{
+	margin-left: 20px;
+	color: white;
+	background-color: #f40;
+	cursor: pointer;
+}
+.quit{
+	font-size: 12px;
+	margin-left: 10px;
+	cursor: pointer;
+}

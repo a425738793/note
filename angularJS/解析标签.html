@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<div ng-controller='Aaa'>
+			
+			<p ng-bind-html='name'></p>
+			<!--ng-bind-html可以识别和显示标签，但使用率较低，所以需要单独添加模块sanitize-->
+			<p ng-non-bindable>{{name}}</p>
+			<!--不解析angular-->
+		</div>
+	</head>
+	<body>
+		
+		<script src="js/angular.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/angular-sanitize.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			
+			var m1 = angular.module('myApp',['ngSanitize']);
+			m1.controller('Aaa',function($scope){
+				$scope.name = "<h1>hello</h1>";
+			})
+		</script>
+	</body>
+</html>

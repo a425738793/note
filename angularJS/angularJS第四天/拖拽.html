@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.oDiv{
+				position: absolute;
+				height: 100px;
+				width: 100px;
+				background: red;
+			}
+		</style>
+		<script src="js/jquery-1.12.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/angular.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var m1 = angular.module('myApp',[]);
+			m1.directive('myHi',function(){
+				
+				return {
+					restrict:"A",
+					link: function(scope,element,attr){
+						
+						element.on('mousedown',function(e){
+							
+							var This = this;
+							var divX = e.pageX-$(this).offset().left;
+							var divY = e.pageY-$(this).offset().top;
+							$(document).on('mousemove',function(e){
+								$(This).css('left',e.pageX-divX);
+								$(This).css('top',e.pageY-divY);
+								
+							});
+							$(document).on('mouseup',function(e){
+								$(document).off();
+							});
+							return false;
+							
+						})
+						
+					}
+					
+					
+				}
+				
+			})
+			m1.controller('Aaa',function($scope){
+			})
+		</script>
+	</head>
+	<body ng-controller="Aaa">
+		<div class="oDiv" id="oDiv" my-hi></div>
+	</body>
+</html>

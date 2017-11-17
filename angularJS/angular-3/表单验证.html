@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/angular.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			
+			var m1 = angular.module('myApp',[]);
+			m1.controller('Aaa',function($scope){
+				
+				$scope.oFormText = {
+					oFormVal: 'default',
+					oFormList:[
+						{name:'default',tips:'请输入账号'},
+						{name:'required',tips:'账号不能为空'},
+						{name:'pattern',tips:'请输入英文'},
+						{name:'ok',tips:'√'}
+					],
+					
+					change:function(err){
+						
+						for (var attr in err){
+							
+							if (err[attr] == true) {
+								this.oFormVal = attr;
+								return;
+							}
+						}
+						
+						this.oFormVal = 'ok';
+						
+					}
+					
+					
+				};
+				$scope.oFormPassword = {
+					oFormVal: 'default',
+					oFormList:[
+						{name:'default',tips:'请输入密码'},
+						{name:'required',tips:'密码不能为空'},
+						{name:'minlength',tips:'长度不能少于6位'},
+						{name:'ok',tips:'√'}
+					],
+					
+					change:function(err){
+						
+						for (var attr in err){
+							
+							if (err[attr] == true) {
+								this.oFormVal = attr;
+								return;
+							}
+						}
+						
+						this.oFormVal = 'ok';
+						
+					}
+					
+					
+				};
+				
+			})
+			
+		</script>
+		<style type="text/css">
+			.red{
+				color: red;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div ng-controller='Aaa'>
+			
+			<form name="oForm">
+				
+				<div>
+					<label>账号:</label>
+					<input type="text" name="unText" placeholder="请输入账号" required ng-pattern="/^[a-zA-Z]+$/" ng-model="oFormText.un" ng-blur="oFormText.change(oForm.unText.$error)" />
+					<span class="red" ng-repeat='FM in oFormText.oFormList | filter:oFormText.oFormVal'>{{FM.tips}}</span>
+				</div>
+				<div>
+					<label>密码:</label>
+					<input type="password" name="upText" placeholder="请输密码"  ng-minlength="6"  ng-model="oFormPassword.up" ng-blur="oFormPassword.change(oForm.upText.$error)" />
+					<span class="red" ng-repeat='FM in oFormPassword.oFormList | filter:oFormPassword.oFormVal'>{{FM.tips}}</span>
+				</div>
+			</form>
+			
+		</div>
+		
+	</body>
+</html>

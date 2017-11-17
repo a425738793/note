@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div ng-controller="Aaa">
+			{{name}}
+		</div>
+		
+		<script src="js/angular.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			
+			var m1 = angular.module('myApp',[]);
+			m1.controller('Aaa',function($scope,$q){
+				$scope.name = "路飞";
+				var df = $q.defer();
+				function show(){
+					setTimeout(function(){
+//						df.resolve();
+//						成功
+						
+						df.reject();
+//						失败
+						
+					},2000);
+					return df.promise;
+					
+				}
+				
+				show().then(function(){
+					alert('成功的');
+				},function(){
+					alert('失败的');
+				})
+			})
+		</script>
+	</body>
+</html>

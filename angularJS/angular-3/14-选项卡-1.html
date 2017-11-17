@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.oDiv1 div,.oDiv2 div{
+				display: none;
+				width: 200px;
+				height: 200px;
+				border: 2px solid purple;
+			} 
+			.red{
+				background: red;
+			}
+		</style>
+	</head>
+	<body ng-controller="Aaa">
+		<my-hi my-class="oDiv1" my-name="name" my-fn="show()"></my-hi>
+		<my-hi my-class="oDiv2" my-name="name1"></my-hi>
+		
+		<script src="js/angular.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			
+			var m1 = angular.module('myApp',[]);
+			
+			m1.directive("myHi",function(){
+				return {
+					restrict: "E",
+					replace: true,
+					scope:{
+						myClass:"@",
+						//@绑定的是字符串，输入什么，解析什么
+						myName:"=",
+						//=绑定的是数据，是作用域下的变量名
+						myFn:"&"
+					},
+					controller:["$scope",function($scope){
+						$scope.name="江盟";
+					}],
+//					隔离作用域/让数据隔离
+					template: '<div class="{{myClass}}">\
+								<span class="red" ng-click="myFn()">图片</span>\
+								<span>新闻</span>\
+								<span>汽车</span>\
+								<div style="display:block">{{myName}}:{{name}}</div>\
+								<div>新闻新闻新闻新闻</div>\
+								<div>汽车汽车汽车汽车</div>\
+							</div>'
+				}
+			})
+			
+			m1.controller('Aaa',function($scope){
+				$scope.name = "路飞";
+				$scope.name1 = "凯凯";
+				$scope.show = function(){
+					alert(123);
+				}
+			})
+		</script>
+	</body>
+</html>

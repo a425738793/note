@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<link rel="stylesheet" type="text/css" href="css/list.css"/>
+		<script src="js/jquery-1.12.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/list.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<header>
+			<div class="header-top">
+				<div class="heade-wrap">
+					<a href="index.html" class="logo"></a>
+					<div class="login">
+						
+					</div>
+					<div class="shopcar">
+						购物车
+					</div>
+					<div class="search">
+						<input type="text" name="txt" id="txt" value="" />
+						<input type="button" name="sbtn" id="sbtn" value="搜索" />
+					</div>
+				</div>
+			</div>
+			<nav  id="nav">
+				<ul class="nav">
+					<li><a href="index.html">首页</a></li>
+				</ul>
+			</nav>
+		</header>
+		<section>
+			<div class="goodaList">
+				<ul class="goodsUl" id="goodsUl">
+					 <!--'<li><img src="' +obj.data[i].goods_thumb+ '" /><p>' +obj.data[i].goods_name+ '</p><p>' +obj.data[i].goods_desc+ '</p><p>' +obj.data[i].price+ '</p></li>'-->
+				</ul>
+			</div>
+			<div class="button" id="button">
+				<em id="ButtonPrev">上一页</em>
+				
+				<div class="button-center">
+					<div id="ButtonCenter"></div>
+				</div>
+				
+				<em id="ButtonNext">下一页</em>
+			</div>
+		</section>
+		<script type="text/javascript">
+			
+			
+//			if (localStorage.getItem("token")) {
+//						
+//						$(".login").html("欢迎，"+localStorage.getItem("username"));
+//						
+//					}else{
+//						$(".login").html('<a href="login.html">登录</a><a href="register.html">注册</a>')
+//					}
+//			
+//			
+//			
+//			$.get("http://h6.duchengjiu.top/shop/api_goods.php",function(data){
+//						
+//						var obj =data;
+//						for (var i = 0; i<data.data.length; i++) {
+//							
+//							$("#goodsUl").append('<li><img src="' +obj.data[i].goods_thumb+ '" /><p class="name"><a href=detail.html?goods_id='+obj.data[i].goods_id+'>' +obj.data[i].goods_name+ '</a></p><p class="desc">' +obj.data[i].goods_desc+ '</p><p class="price">' +obj.data[i].price+ '元</p></li>');
+//
+//						}
+//							
+//						
+//						
+//					})
+//			var str = location.search.substr(1);
+//			
+//			var catId = str.split("=");
+//			console.log(catId);
+//			
+//			$.get("http://h6.duchengjiu.top/shop/api_cat.php",function(data){
+//		
+//		
+//				for (var i = 0; i<data.data.length; i++) {
+//					$("#nav .nav").append("<li><a href='list.html?cat_id="+data.data[i].cat_id+"'>"+data.data[i].cat_name+"</a></li>")
+//				}
+//					
+//				
+//				
+//			})
+//			
+//			$.ajax({
+//				"url": "http://h6.duchengjiu.top/shop/api_goods.php",
+//				"type": "GET",
+//				"data": {
+//					"cat_id": catId[1]
+//				},
+//				"dataType": "json",
+//				"success": function(response){
+//					$("#goodsUl").html("");
+//					var obj = response;
+//					for(var i=0;i<obj.data.length;i++){
+//						
+//						$("#goodsUl").append('<li><img src="' +obj.data[i].goods_thumb+ '" /><p class="name"><a href=detail.html?goods_id='+obj.data[i].goods_id+'>' +obj.data[i].goods_name+ '</a></p><p class="desc">' +obj.data[i].goods_desc+ '</p><p class="price">' +obj.data[i].price+ '元</p></li>');
+//					}
+//				}
+//				
+//				
+//			})
+
+		</script>
+		<footer>
+			<div class="footer">
+				
+			
+				<div class="fl">
+					<a href="">
+						<div class="download">
+							<p class="phone">iPhone Android</p>
+							<p>客户端下载</p>
+							<div class="ewm">
+								<div class="iphone">
+									<span></span>
+									<p>下载iPhone版</p>
+								</div>
+								<div class="android">
+									<span></span>
+									<p>下载Android版</p>
+								</div>
+							</div>
+						</div>
+							
+					</a>
+					<div class="friendly">
+						<p class="toplink">
+							<a href="#" class="first">关于良仓</a>
+							<a href="#">服务协议</a>
+							<a href="#">隐私保护政策</a>
+							<a href="#">使用指南</a>
+							<a href="#">联系我们</a>
+							<a href="#">加入我们</a>
+							<a href="#">友情链接</a>
+							<a href="#">私信良仓</a>
+						</p>
+						<p>&copy;&nbsp;2013-2015 北京良仓文化传播有限公司版权所有&nbsp;京ICP备13010677号-1 &nbsp;京公网安备11010502025627</p>
+						<p>&nbsp;&nbsp;公司名称：北京良仓文化传播有限公司&nbsp;&nbsp;电话：010-58263516</p>
+						<p>&nbsp;&nbsp;公司地址：北京朝阳区百子湾路32号6号楼1层60号.</p>
+						<p>&nbsp;&nbsp;社会信用统一代码：91110105059231575L&nbsp;&nbsp;食品许可证：JY11105160159557  </p>
+						<p>&nbsp;&nbsp;图书证名称：中华人民共和国出版物经营许可证&nbsp;&nbsp;图书证编号：新出发京零 字第 朝 150051 号  </p>
+					</div>
+					
+				</div>
+				<div class="fr">
+					<div class="commun">
+						<ul>
+							<li>
+								<a href="#" class="douban"></a>
+							</li>
+							<li>
+								<a href="#" class="sina"></a>
+							</li>
+							
+							<li>
+								<a href="#" class="weixin">
+									<div  class="wechat-code">
+										<s></s>
+									</div>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</footer>
+		
+		<script type="text/javascript">
+//			var timer = null;
+//			for (var i = 0;i<20;i++) {
+//				$("<div class='move'></div>").appendTo($("body"));
+//			}
+//			$(".move").each(function(i){
+//				var r= Math.floor(Math.random()*256);
+//				var g= Math.floor(Math.random()*256);
+//				var b= Math.floor(Math.random()*256);
+//				var left =  Math.random()*$(window).width();
+//				var top =  Math.random()*$(document).height();
+//				$(".move").eq(i).css({"width":50,"height":50,"background-color":"rgb("+r+","+g+","+b+")","position":"absolute","left":left,"top":top,"border-radius":"50%","opacity":.3});
+//			})
+//
+//			var arrL = [];
+//			var arrT = [];
+//			for (var j = 0; j<20;j++) {
+//				arrL.push(5);
+//				arrT.push(5);
+//			}
+//			setInterval(function(){
+//				$(".move").each(function(i){
+//					var nL = arrL[i]+parseInt($(".move").eq(i).css("left"));
+//					var nT = arrT[i]+parseInt($(".move").eq(i).css("top"));
+//					if (nL<0) {
+//						nL = 0;
+//					}
+//					if (nL>$(window).width()-50) {
+//						nL = $(window).width()-50;
+//					}
+//					if (nT<0) {
+//						nT = 0;
+//					}
+//					if (nT>$(document).height()-50) {
+//						nT = $(document).height()-50;
+//					}
+//					
+//					
+//					if (nL<=0 || nL>=$(window).width()-50) {
+//						arrL[i] = -arrL[i];
+//					}
+//					if (nT<=0 || nT>=$(document).height()-50) {
+//						arrT[i] = -arrT[i];
+//					}
+//					$(".move").eq(i).css({"left":nL,"top":nT})
+//					
+//				})
+//				
+//			},30)
+		</script>
+		
+	</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.login{
+				position: relative;
+				width: 285px;
+				margin: 50px auto;
+				padding: 10px;
+				border: 1px solid chocolate;
+			}
+			.login-title{
+				height: 25px;
+			}
+			.login-title .logo,.login-title .title{
+				float: left;
+			}
+			.login-title .logo{
+				width: 24px;
+				height: 24px;
+				margin-left: 20px;
+				background: url(img/expo_shanghai_china_2010_24px_515174_easyicon.net.png) no-repeat;
+			}
+			.login-title .title{
+				margin-left: 70px;
+			}
+			.form{
+				margin-top: 10px;
+			}
+			.btn{
+				margin-top: 10px;
+			}
+			.btn input{
+				margin-left: 50px;
+			}
+			.icon{
+				width: 285px;
+				margin: 10px auto;
+			}
+			.icon span{
+				float: left;
+				width: 50px;
+				height: 50px;
+				background: url(img/timg.jpg) no-repeat;
+			}
+			.icon .qq{
+				background-position: -497px -178px;
+			}
+			#un-tip{
+				height: 50px;
+				width: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="login">
+			<div class="login-title">
+				<a href="" class="logo"></a>
+				<h3 class="title">登录</h3>
+			</div>
+			<div class="form">
+				<form action="" method="post">
+					<p class="un">账 号：<input type="text" id="un" /></p>
+					<p id="un-tip"></p>
+					<p class="up">密 码：<input type="password" id="up" /></p>
+					<p id="up-tip"></p>
+					<p class="btn">
+						<input type="button" name="" id="zc" value="注册" />
+						<input type="button" name="" id="dl" value="登录" />
+					</p>
+				</form>
+			</div>
+		</div>
+		<div class="icon">
+			<span class="qq"></span>
+			<span class="wx"></span>
+			<span class="wb"></span>
+		</div>
+		<script type="text/javascript">
+			var un = document.getElementById("un");
+			var up = document.getElementById("up");
+			var btn = document.getElementById("dl");
+			var un_tip = document.getElementById("un-tip");
+			un.onblur = function(){
+				var xhr = new XMLHttpRequest();
+				xhr.onreadystatechange = function(){
+					if( xhr.readyState == 4){
+						console.log(xhr.responseText);
+						//结果回来之后干什么
+//						if( xhr.responseText == "y"){
+//							tip.style.display="block";
+//							tip.className="correct";
+//							tip.innerHTML = "恭喜，用户名正确";
+//						}else if( xhr.responseText == "n"){
+//							tip.style.display="block";
+//							tip.className="wrong";
+//							tip.innerHTML = "账号错误！";
+//						}
+					}
+				}
+				
+				//第三步，创建一个请求，第一个参数是请求的类型，
+//				第二个参数是请求的路径，第三个参数叫做是否使用异步
+				
+				
+				
+				xhr.open("get","php/un.php?un=" +un.value);
+				
+				//第四步，发送请求，圆括号里面是请求头内容，get请求没有报文头写null
+				xhr.send(null);
+
+				
+			}
+			
+		</script>
+	</body>
+</html>

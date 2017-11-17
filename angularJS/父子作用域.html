@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/angular.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var m1 = angular.module('myApp',[]);
+			m1.controller('Aaa',function($scope,$rootScope){
+				
+				$scope.name = "gkk";
+				$scope.age = '50';
+				$rootScope.age = '20';
+				
+			})
+			m1.controller('Bbb',function($scope){
+//				
+				$scope.name = 'gkk2';
+				$scope.age='30';
+			})
+
+		</script>
+	</head>
+	<body>
+		
+		<div ng-controller='Aaa'>
+			<p>{{name}}</p>
+			<p>{{age}}</p>
+			<div ng-controller='Bbb'>
+				<p>{{name}}</p>
+				<p>{{age}}</p>
+			</div>
+		</div>
+		<div>
+			{{age}}
+		</div>
+		
+	</body>
+</html>

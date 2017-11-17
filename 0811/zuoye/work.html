@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			li{
+				list-style: none;
+				position: relative;
+				float: left;
+				width: 316px;
+				height: 316px;
+				margin-right: 26px;
+				margin-bottom: 30px;
+			}
+			li img{
+				width: 316px;
+				height: 316px;
+			}
+			li .shadow{
+				position: absolute;
+				display: none;
+				top: 0;
+				left: 0;
+				width: 286px;
+				height: 286px;
+				padding: 15px;
+				background: rgba(0,0,0,.5);
+			}
+			.list{
+				width: 1030px;
+				height: 100px;
+			}
+			.wrap{
+				width: 1000px;
+				margin: 50px auto;
+			}
+			li .shadow .pric{
+				color: #0c6eba;
+   				font-size: 20px;
+    			font-style: italic;
+			}
+			li .shadow .name{
+				font-size: 14px;
+				margin: 0px auto;
+				margin-top: 80px;
+    			text-align: center;
+    			color: #fff;
+    			width: 85%;
+    			height: 25px;
+    			line-height: 20px;
+    			vertical-align: middle;
+    			overflow: hidden;
+    			white-space: nowrap;
+    			text-overflow: ellipsis;
+    			font-weight: bold;
+			}
+			li .shadow .info{
+				font-size: 12px;
+    			font-weight: 100;
+    			white-space: normal;
+    			height: auto;
+    			margin: 5px auto 0;
+    			text-align: center;
+    			color: #fff;
+    			width: 85%;
+   		 		line-height: 20px;
+    			vertical-align: middle;
+    			overflow: hidden;
+    			text-overflow: ellipsis;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			var $ = {
+				ajax : function(options){
+					var url = options.url;
+					if(url === undefined){
+						throw new Error("ajax需要一个路径");
+						return;
+					}
+					var type = options.type || "GET";
+					var xhr = null;
+					//兼容处理
+					if (window.XMLHttpRequest) {
+						xhr = new XMLHttpRequest();
+					}else{
+						xhr = new ActiveXObject("Microsoft.XMLHTTP");
+					}
+					
+					xhr.onreadystatechange = function(){
+						if (xhr.readyState == 4) {
+							if (xhr.status >= 200 && xhr.status<300 ||  xhr.status ==304) {
+								if ((typeof options.success) === "function") {
+									options.success(JSON.parse(xhr.responseText));
+								}
+							}
+						}
+					}
+					xhr.open(type,url);
+					xhr.send(options.send);
+				}
+			}
+			
+			$.ajax({"url" :"http://h6.duchengjiu.top/shop/api_goods.php",
+				"type": "GET",
+				"success":function(response){
+//					console.log(response);
+					var oDiv = document.createElement("div");
+					oDiv.className = "wrap";
+					var oUl = document.createElement("ul")
+					oUl.className = "list"
+					var lis = "";
+					for(var i = 0; i<response.data.length; i++){
+						lis+= "<li><img src='"+response.data[i].goods_thumb+"'><div class='shadow'><span class='pric'>"+"￥"+response.data[i].price+"</span><p class='name'>"+response.data[i].goods_name+"</p><p class='info'>"+response.data[i].goods_desc+"</p></div></li>"
+					}
+					oUl.innerHTML = lis;
+					oDiv.appendChild(oUl);
+					document.body.appendChild(oDiv);
+					
+					var aLi = document.getElementsByTagName("li");
+			var shadow = document.getElementsByClassName("shadow");
+			for (var j = 0; j<aLi.length;j++) {
+				(function(j){
+					aLi[j].onmouseover = function(){
+						shadow[j].style.display = "block";
+					}
+					aLi[j].onmouseout = function(){
+						shadow[j].style.display = "none";
+					}
+				})(j)
+			}
+				},
+				"send":null})
+			
+		</script>
+				
+	</body>
+</html>
